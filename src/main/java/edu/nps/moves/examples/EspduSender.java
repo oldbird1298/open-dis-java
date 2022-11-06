@@ -127,8 +127,8 @@ public static void main(String args[])
     // VMRL/x3d/virtual world.
     EntityID entityID = espdu.getEntityID();
     entityID.setSite(1);  // 0 is apparently not a valid site number, per the spec
-    entityID.setApplication(1); 
-    entityID.setEntity(2); 
+    entityID.setApplication(100);
+    entityID.setEntity(1008);
     
     // Set the entity type. SISO has a big list of enumerations, so that by
     // specifying various numbers we can say this is an M1A2 American tank,
@@ -138,11 +138,16 @@ public static void main(String args[])
     // numbers here.
     EntityType entityType = espdu.getEntityType();
     entityType.setEntityKind((short)1);      // Platform (vs lifeform, munition, sensor, etc.)
-    entityType.setCountry(225);              // USA
-    entityType.setDomain((short)1);          // Land (vs air, surface, subsurface, space)
+//    entityType.setCountry(225);              // USA
+    entityType.setCountry(82);              // Greece
+    entityType.setDomain((short)2);          // Land (vs air, surface, subsurface, space)
     entityType.setCategory((short)1);        // Tank
-    entityType.setSubcategory((short)1);     // M1 Abrams
-    entityType.setSpec((short)3);            // M1A2 Abrams
+    entityType.setSubcategory((short)3);     // M1 Abrams
+    entityType.setSpec((short)10);            // M1A2 Abrams
+
+    //Set alternative entity type
+    entityType.setExtra((short)0);
+
     
 
     Set<InetAddress> broadcastAddresses;
@@ -210,13 +215,13 @@ public static void main(String args[])
             System.out.println("DIS coord:" + disCoordinates[0] + ", " + disCoordinates[1] + ", " + disCoordinates[2]);
 
             // Optionally, we can do some rotation of the entity
-            /*
+
             Orientation orientation = espdu.getEntityOrientation();
             float psi = orientation.getPsi();
             psi = psi + idx;
             orientation.setPsi(psi);
             orientation.setTheta((float)(orientation.getTheta() + idx /2.0));
-             */
+             //Comment the orientation
             
             // You can set other ESPDU values here, such as the velocity, acceleration,
             // and so on.

@@ -28,7 +28,7 @@ public class EspduReceiver {
 
         try {
             // Specify the socket to receive data
-            socket = new MulticastSocket(3001);
+            socket = new MulticastSocket(3000);
             socket.setBroadcast(true);
        
             //address = InetAddress.getByName(EspduSender.DEFAULT_MULTICAST_GROUP);
